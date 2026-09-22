@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>StreamFlix — Unlimited movies, TV shows and more</title>
+  <meta name="description" content="A responsive Netflix-style streaming UI clone built with HTML, CSS and JavaScript." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23000%22/><text x=%2250%22 y=%2270%22 font-size=%2270%22 fill=%22%23e50914%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22bold%22>S</text></svg>">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header id="site-header" class="header">
+    <div class="header__inner">
+      <div class="header__left">
+        <a href="#" class="logo" aria-label="StreamFlix home">STREAMFLIX</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#" class="nav-link active">Home</a>
+          <a href="#rows" class="nav-link">TV Shows</a>
+          <a href="#rows" class="nav-link">Movies</a>
+          <a href="#rows" class="nav-link">New &amp; Popular</a>
+          <a href="#" class="nav-link">My List</a>
+        </nav>
+      </div>
+      <div class="header__right">
+        <button class="icon-btn search-toggle" aria-label="Search" aria-expanded="false" aria-controls="search-box">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14"/></svg>
+        </button>
+        <input id="search-box" class="search-box" type="text" placeholder="Titles, people, genres" aria-label="Search titles" />
+        <span class="notif icon-btn" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2m6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1z"/></svg>
+        </span>
+        <div class="profile" tabindex="0">
+          <div class="profile__avatar" aria-hidden="true">S</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__scrim"></div>
+    <div class="hero__content">
+      <p class="hero__badge">StreamFlix Original</p>
+      <h1 class="hero__title" id="hero-title">The Last Signal</h1>
+      <p class="hero__desc" id="hero-desc">
+        When a deep-space listening station picks up a transmission older than the universe itself,
+        a skeleton crew must decide whether to answer back.
+      </p>
+      <div class="hero__actions">
+        <button class="btn btn--play" data-action="play">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          Play
+        </button>
+        <button class="btn btn--info" data-action="info">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8"/></svg>
+          More Info
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Rows ===== -->
+  <main id="rows" class="rows"></main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__social">Built as a front-end portfolio project — not affiliated with Netflix.</p>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <a href="#">FAQ</a>
+          <a href="#">Help Centre</a>
+          <a href="#">Account</a>
+        </div>
+        <div class="footer__col">
+          <a href="#">Media Centre</a>
+          <a href="#">Investor Relations</a>
+          <a href="#">Jobs</a>
+        </div>
+        <div class="footer__col">
+          <a href="#">Ways to Watch</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy</a>
+        </div>
+        <div class="footer__col">
+          <a href="#">Cookie Preferences</a>
+          <a href="#">Corporate Information</a>
+          <a href="#">Contact Us</a>
+        </div>
+      </div>
+      <p class="footer__copy">© <span id="year"></span> StreamFlix Clone — Demo project by a developer learning HTML/CSS/JS.</p>
+    </div>
+  </footer>
+
+  <!-- ===== Modal ===== -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" id="modal-close" aria-label="Close">&times;</button>
+      <div class="modal__hero" id="modal-hero">
+        <div class="modal__hero-scrim"></div>
+        <div class="modal__hero-actions">
+          <button class="btn btn--play btn--sm" data-action="play"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>Play</button>
+          <button class="icon-btn round" aria-label="Add to My List">+</button>
+          <button class="icon-btn round" aria-label="Like">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="modal__body">
+        <div class="modal__meta">
+          <span class="modal__match">98% Match</span>
+          <span id="modal-year"></span>
+          <span class="modal__badge">HD</span>
+        </div>
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+        <p class="modal__cast"><span>Cast:</span> <span id="modal-cast"></span></p>
+        <p class="modal__genres"><span>Genres:</span> <span id="modal-genres"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
